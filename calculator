@@ -1,42 +1,94 @@
 # include <iostream>
 using namespace std;
 
+int romanToNum(string romanNumber) {
+    
+    int number = 0;
+    
+    for (int i=0; i<romanNumber.length(); i++){
+        if (romanNumber[i] == 'I') {
+            if (romanNumber[i+1] == 'V') {
+                number += 4;
+                i++;
+            }
+            else if (romanNumber[i+1] == 'X') {
+                number += 9;
+                i++;
+            }
+            else {
+                number += 1;
+            }
+        }
+        else if (romanNumber[i] == 'V') {
+            number += 5;
+        }
+        else if (romanNumber[i] == 'X') {
+            if (romanNumber[i+1] == 'L') {
+                number += 40;
+                i++;
+            }
+            else if (romanNumber[i+1] == 'C') {
+                number += 90;
+                i++;
+            }
+            else {
+            number += 10;
+            }
+        }
+        else if (romanNumber[i] == 'L') {
+            number += 50;
+        }
+        else if (romanNumber[i] == 'C') {
+            number += 100;
+    }
+    
+    }
+    return number;
+}
 int main() {
 
+
+
 float lastNum;
-    while (true) {
-        
+
+    
   char op;
+  string rom1, rom2;
   float num1, num2;
 
+  
+
+  cout << "Enter first operand: ";
+  cin >> rom1;
+  num1 = romanToNum(rom1);
+  cout << num1 << endl;
   cout << "Enter operator: +, -, *, /: ";
   cin >> op;
-
-  cout << "Enter two operands: ";
-  if (lastNum != NULL) num1 = lastNum;
-  else cin >> num1;
-  cin >> num2;
+  cout << "Enter second operand: ";
+  cin >> rom2;
+  num2 = romanToNum(rom2);
+  cout << romanToNum(rom2) << endl;
 
   switch (op) {
 
     case '+':
     lastNum = num1 + num2;
-      cout << num1 << " + " << num2 << " = " << lastNum;
+      cout << num1 << " + " << num2 << " = " << lastNum << endl;
       break;
 
     case '-':
     lastNum = num1 - num2;
-      cout << num1 << " - " << num2 << " = " << lastNum;
+      cout << num1 << " - " << num2 << " = " << lastNum << endl;
       break;
 
     case '*':
     lastNum = num1 * num2;
-      cout << num1 << " * " << num2 << " = " << lastNum;
+      cout << num1 << " * " << num2 << " = " << lastNum << endl;
       break;
 
     case '/':
     lastNum = num1 / num2;
-      cout << num1 << " / " << num2 << " = " << lastNum;
+      cout << num1 << " / " << num2 << " = " << lastNum << endl;
       break;
       
     
@@ -46,7 +98,8 @@ float lastNum;
       cout << "Error! operator is not correct";
       break;
   }
-    }
 
-  return 0;
+    return 0;
 }
+
+  
